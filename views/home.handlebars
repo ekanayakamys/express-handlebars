@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Details</h1>
+    <table class="table">
+        <tr>
+            <td>USER ID</td>
+            <td>USER NAME</td>
+            <td>PASSWORD</td>
+            <td>REMOVE</td>
+        </tr>
+        <tbody>
+            {{#each result}}
+            <tr><td>{{this.id}}</td><td>{{this.name}}</td><td>{{this.password}}</td>
+            <td><button class="btn-danger btn">delete</button></td></tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(".btn-danger").click(function(){
+            var ino=$(this).parent().parent().children().first().html()
+            $.ajax({
+                type:'post',
+                url:'/deleteuser',
+                data:{IndexNo:ino},
+                success:function(data){
+
+                }
+            })
+    });
+</script>
